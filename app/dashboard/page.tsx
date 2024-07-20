@@ -13,7 +13,6 @@ export default async function Dashboard() {
     return redirect("/login");
   }
 
-  console.log(user);
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <h1>Welcome user {user?.email}</h1>

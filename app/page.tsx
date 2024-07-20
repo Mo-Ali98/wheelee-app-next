@@ -1,54 +1,57 @@
-import DeployButton from "../components/DeployButton";
-import AuthButton from "../components/AuthButton";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
 import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/tutorial/ConnectSupabaseSteps";
-import SignUpUserSteps from "@/components/tutorial/SignUpUserSteps";
-import Header from "@/components/Header";
 
-export default async function Index() {
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
+import placeholder from "../assets/placeholder.svg";
+export default async function Home() {
+  const supabase = createClient();
 
-  const isSupabaseConnected = canInitSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    return redirect("/dashboard");
+  }
 
   return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <DeployButton />
-          {isSupabaseConnected && <AuthButton />}
-        </div>
-      </nav>
-
-      <div className="flex-1 flex flex-col gap-20 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          {isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-        </main>
-      </div>
-
-      <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
-        <p>
-          Powered by{" "}
-          <a
-            href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-            target="_blank"
-            className="font-bold hover:underline"
-            rel="noreferrer"
-          >
-            Supabase
-          </a>
-        </p>
-      </footer>
+    <div className="flex-1 flex flex-col gap-12 max-w-4xl px-3">
+      <main className="flex-1 flex flex-col gap-6">
+        <section className="w-full py-5 md:py-24 lg:py-16">
+          <div className="">
+            <div className="mx-auto grid max-w-[1300px] gap-4 md:grid-cols-2 md:gap-16">
+              <div>
+                <h1 className="lg:leading-tighter my-2 text-center text-3xl font-bold tracking-tighter text-[hsl(280,100%,70%)] sm:text-4xl md:text-left md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
+                  Put Your Ad in Motion!
+                </h1>
+                <p className="mx-auto max-w-[700px] md:text-md">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book.
+                </p>
+                <div className="mt-4 space-x-4">
+                  <Link
+                    href="/login"
+                    className="inline-flex h-9 items-center justify-center rounded-md bg-purple-700 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-purple-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                    prefetch={false}
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              </div>
+              <Image
+                src={placeholder} // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+                alt="Hero"
+                className="mx-auto aspect-[2/1] overflow-hidden rounded-xl object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

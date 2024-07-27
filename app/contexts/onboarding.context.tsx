@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 import { type OnboardingInfo } from "../models/models";
 
-type CurrentStep = 1 | 2 | 3;
+type CurrentStep = 1 | 2;
 interface OnboardingContext {
   currentStep: CurrentStep;
   totalSteps: number;
@@ -35,7 +35,7 @@ export function OnboardingProvider({
   const initSettings = {};
   const [data, setData] = React.useState<OnboardingInfo>(initSettings);
 
-  const totalSteps = 3;
+  const totalSteps = 2;
 
   useEffect(() => {
     console.log(data);

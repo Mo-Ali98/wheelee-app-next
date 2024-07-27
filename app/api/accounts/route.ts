@@ -1,14 +1,19 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import { createAccount } from "@/lib/accounts/accountsService";
+import { createClient } from "@/utils/supabase/server";
 
 // Handle POST requests
 export async function POST(req: NextRequest) {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   try {
-    // Parse request body
     const { first_name, last_name } = await req.json();
 
-    // Validate the input
+    // Validate input
     if (!first_name || !last_name) {
       return NextResponse.json(
         { error: "Missing required fields" },
@@ -16,8 +21,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const { error } = await supabase
+      .from("Account")
+      .insert([{ first_name, last_name, auth_id: user?.id, onboarded: true }])
+      .single();
+
+    if (error) {
+      console.error("Error creating account:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
     // Insert the new account into the database
-    await createAccount({ first_name, last_name });
 
     return NextResponse.json(
       { message: "Account created successfully!" },

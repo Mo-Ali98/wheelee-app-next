@@ -27,9 +27,10 @@ export default async function Profile() {
 
   const account = await getAccountByAuthId(user.id);
 
-  if (!account) {
-    redirect("/");
+  if (!account || !account.onboarded) {
+    redirect("/welcome");
   }
+
   const name = `${account.first_name} ${account?.last_name}`;
 
   return (

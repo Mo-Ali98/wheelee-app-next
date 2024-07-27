@@ -1,6 +1,8 @@
+import { SettingsIcon } from "lucide-react";
+
 export const metadata = {
-  title: "Dashboard",
-  description: "My Dashboard",
+  title: "Settings",
+  description: "My Settings",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -9,5 +11,13 @@ export default function ProfileLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <div className="flex-1 w-full flex flex-col gap-6 p-6">
+      <h1 className="flex gap-2 items-center text-4xl font-medium">
+        <SettingsIcon className="h-8 w-8" />
+        Settings
+      </h1>
+      {children}
+    </div>
+  );
 }

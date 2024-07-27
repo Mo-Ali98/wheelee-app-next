@@ -1,7 +1,7 @@
 import {
   LayoutDashboardIcon,
+  LoaderPinwheelIcon,
   MenuIcon,
-  MountainIcon,
   SettingsIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -31,7 +31,7 @@ export default async function LayoutHeader() {
     return (
       <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 sticky top-0">
         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <Link className="text-[hsl(280,100%,70%)] text-lg" href={"/"}>
+          <Link className="text-lg" href={"/"}>
             Wheelie
           </Link>
           <AuthButton />
@@ -56,8 +56,8 @@ export default async function LayoutHeader() {
                 href="/"
                 className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
               >
-                <MountainIcon className="h-5 w-5 transition-all group-hover:scale-110" />
-                <span className="sr-only">Acme Inc</span>
+                <LoaderPinwheelIcon className="h-6 w-6 transition-all group-hover:scale-110" />
+                <span className="sr-only">Wheelie</span>
               </Link>
               <Link
                 href="/dashboard"

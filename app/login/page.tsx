@@ -44,7 +44,7 @@ export default async function Login({
         />
         <SubmitButton
           formAction={emailLogin}
-          className="bg-purple-700 hover:bg-purple-600 text-white rounded-md px-4 py-2 mb-2"
+          className="bg-slate-900 hover:bg-slate-800 text-white rounded-md px-4 py-2 mb-2"
           pendingText="Signing In..."
         >
           Sign In

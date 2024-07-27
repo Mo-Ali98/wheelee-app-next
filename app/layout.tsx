@@ -26,11 +26,11 @@ export default function RootLayout({
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <LayoutSideBar />
             <LayoutHeader />
-            <div className="flex-1 w-full flex flex-col gap-20 items-center">
+            <div className="flex-1 w-full flex flex-col gap-20 items-center pl-14 pr-10">
               {children}
             </div>
             <footer className="w-full p-3 flex justify-center text-center text-xs">
-              <p className="text-[hsl(280,100%,70%)]">Wheelie</p>
+              <p className="">Wheelie</p>
             </footer>
           </div>
         </main>

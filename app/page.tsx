@@ -23,7 +23,7 @@ export default async function Home() {
           <div className="">
             <div className="mx-auto grid max-w-[1300px] gap-4 md:grid-cols-2 md:gap-16">
               <div>
-                <h1 className="lg:leading-tighter my-2 text-center text-3xl font-bold tracking-tighter text-[hsl(280,100%,70%)] sm:text-4xl md:text-left md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
+                <h1 className="lg:leading-tighter my-2 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-left md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                   Put Your Ad in Motion!
                 </h1>
                 <p className="mx-auto max-w-[700px] md:text-md">

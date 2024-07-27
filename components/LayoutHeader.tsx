@@ -1,14 +1,9 @@
 import {
-  CommandIcon,
-  InfoIcon,
   LayoutDashboardIcon,
   MenuIcon,
   MountainIcon,
   SettingsIcon,
-  StoreIcon,
-  UsersIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -65,40 +60,13 @@ export default async function LayoutHeader() {
                 <span className="sr-only">Acme Inc</span>
               </Link>
               <Link
-                href="#"
+                href="/dashboard"
                 className="flex items-center gap-4 px-2.5 text-foreground"
               >
                 <LayoutDashboardIcon className="h-5 w-5" />
                 Dashboard
               </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <CommandIcon className="h-5 w-5" />
-                Orders
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <StoreIcon className="h-5 w-5" />
-                Products
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <UsersIcon className="h-5 w-5" />
-                Customers
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <InfoIcon className="h-5 w-5" />
-                Analytics
-              </Link>
+
               <Link
                 href="/profile"
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
@@ -117,25 +85,17 @@ export default async function LayoutHeader() {
               size="icon"
               className="overflow-hidden rounded-full"
             >
-              <Image
-                src="/placeholder.svg"
-                width={36}
-                height={36}
-                alt="Avatar"
-                className="overflow-hidden rounded-full"
-              />
+              <div className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 overflow-hidden rounded-full h-8 w-8" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <Link href="/profile">
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+            </Link>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              {" "}
-              <AuthButton />
-            </DropdownMenuItem>
+            <AuthButton className="px-2 py-1.5 m-auto" />
           </DropdownMenuContent>
         </DropdownMenu>
       </header>

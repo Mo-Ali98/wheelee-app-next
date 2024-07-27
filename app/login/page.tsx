@@ -1,56 +1,24 @@
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { SubmitButton } from "@/components/submit-button";
 import { createClient } from "@/utils/supabase/server";
 
-import { SubmitButton } from "./submit-button";
+import { emailLogin, signUp } from "./actions";
 
-export default function Login({
+export default async function Login({
   searchParams,
 }: {
   searchParams: { message: string };
 }) {
-  const signIn = async (formData: FormData) => {
-    "use server";
+  const supabase = createClient();
 
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      return redirect("/login?message=Could not authenticate user");
-    }
-
+  if (user) {
     return redirect("/dashboard");
-  };
-
-  const signUp = async (formData: FormData) => {
-    "use server";
-
-    const origin = headers().get("origin");
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    const supabase = createClient();
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${origin}/auth/callback`,
-      },
-    });
-
-    if (error) {
-      return redirect("/login?message=Could not authenticate user");
-    }
-
-    return redirect("/login?message=Check email to continue sign in process");
-  };
+  }
 
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
@@ -75,8 +43,8 @@ export default function Login({
           required
         />
         <SubmitButton
-          formAction={signIn}
-          className="bg-purple-700 hover:bg-purple-600 text-white rounded-md px-4 py-2 mb-2"
+          formAction={emailLogin}
+          className="bg-slate-900 hover:bg-slate-800 text-white rounded-md px-4 py-2 mb-2"
           pendingText="Signing In..."
         >
           Sign In

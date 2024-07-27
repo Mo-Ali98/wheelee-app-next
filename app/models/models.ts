@@ -6,3 +6,10 @@ export interface Account {
   auth_id: string;
   onboarded: boolean;
 }
+
+export interface OnboardingInfo {
+  auth_id?: string;
+  first_name?: string;
+  last_name?: string;
+  hasCompleted?: boolean;
+}

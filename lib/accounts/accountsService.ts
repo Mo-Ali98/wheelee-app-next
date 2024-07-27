@@ -1,14 +1,24 @@
 // lib/Accountervice.ts
 
-import { type Account } from "@/app/models/models";
+import { type Account, type OnboardingInfo } from "@/app/models/models";
 import { createClient } from "@/utils/supabase/server";
 
 const supabase = createClient();
 
-export async function createAccount(authId: string, username: string) {
+export async function createAccount(onboardingData: OnboardingInfo) {
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError) {
+    console.error("Error getting user:", authError.message);
+    throw new Error(authError.message);
+  }
+
   const { data, error } = await supabase
     .from("Account")
-    .insert([{ auth_id: authId, username }])
+    .insert([{ auth_id: user?.id, ...onboardingData, onboarded: true }])
     .single();
 
   if (error) {

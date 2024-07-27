@@ -5,11 +5,7 @@ import React, { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 
-interface OnboardingInfo {
-  firstName?: string;
-  lastName?: string;
-  hasCompleted?: boolean;
-}
+import { type OnboardingInfo } from "../models/models";
 
 type CurrentStep = 1 | 2 | 3;
 interface OnboardingContext {
@@ -49,6 +45,13 @@ export function OnboardingProvider({
     setLoading(true);
     try {
       console.log("Done", data);
+      await fetch("/api/accounts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
     } catch (error) {
       console.error(error);
     } finally {

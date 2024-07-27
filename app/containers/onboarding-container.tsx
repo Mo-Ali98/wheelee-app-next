@@ -13,8 +13,7 @@ export const Onboarding: React.FC = () => {
   const [lName, setLName] = useState("");
 
   const handleOneClick = () => {
-    setData((d) => ({ ...d, firstName: fName, lastName: lName }));
-
+    setData((d) => ({ ...d, first_name: fName, last_name: lName }));
     nextStep();
   };
 

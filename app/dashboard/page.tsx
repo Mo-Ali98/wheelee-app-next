@@ -16,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getAccountByAuthId } from "@/lib/accounts/accountsService";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Dashboard() {
@@ -27,6 +28,12 @@ export default async function Dashboard() {
 
   if (!user) {
     return redirect("/login");
+  }
+
+  const account = await getAccountByAuthId(user.id);
+
+  if (!account || !account.onboarded) {
+    redirect("/welcome");
   }
 
   //Based on user role force driver

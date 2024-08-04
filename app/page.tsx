@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { getAccountByAuthId } from "@/lib/accounts/accountsService";
 import { createClient } from "@/utils/supabase/server";
 
 import placeholder from "../assets/placeholder.svg";
@@ -13,6 +14,12 @@ export default async function Home() {
   } = await supabase.auth.getUser();
 
   if (user) {
+    const account = await getAccountByAuthId(user.id);
+
+    if (!account || !account.onboarded) {
+      redirect("/welcome");
+    }
+
     return redirect("/dashboard");
   }
 

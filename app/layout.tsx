@@ -26,7 +26,7 @@ export default function RootLayout({
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <LayoutSideBar />
             <LayoutHeader />
-            <div className="flex-1 w-full flex flex-col gap-20 items-center pl-14 pr-10">
+            <div className="flex-1 w-full flex flex-col gap-20 items-center md:pl-14 md:pr-10">
               {children}
             </div>
             <footer className="w-full p-3 flex justify-center text-center text-xs">

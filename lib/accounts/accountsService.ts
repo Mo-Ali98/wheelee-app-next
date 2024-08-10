@@ -44,6 +44,21 @@ export async function getAccountByAuthId(authId: string): Promise<Account> {
   return data[0];
 }
 
+export async function getAccountById(id: string): Promise<Account> {
+  const { data, error } = await supabase
+    .from("Account")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching account:", error.message);
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
 export async function updateAccount(
   authId: string,
   data: Partial<{ username: string }>

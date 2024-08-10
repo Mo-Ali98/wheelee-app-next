@@ -1,4 +1,5 @@
 "use client";
+import { DoorOpenIcon } from "lucide-react";
 import Link from "next/link";
 
 import { type Campaign } from "@/app/models/models";
@@ -11,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatMoney } from "@/lib/utils";
+import { formatMoney } from "@/utils/utils";
 
 interface CampaignTableProps {
   campaigns: Campaign[];
@@ -54,7 +55,7 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
     );
   }
   return (
-    <Card className="p-5 w-full">
+    <Card className="p-5 w-full shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>
@@ -67,13 +68,14 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
             <TableHead className="hidden md:table-cell">Audience</TableHead>
             <TableHead className="hidden md:table-cell">Description</TableHead>
             <TableHead className="">Budget</TableHead>
+            <TableHead className="">View</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {campaigns.map((campaign) => (
             <TableRow key={campaign.id} className="bg-accent">
               <TableCell className="hidden sm:table-cell">
-                {getStatusBadge(campaign.end_date)}
+                <StatusBadge endDate={campaign.end_date} />
               </TableCell>
               <TableCell>
                 <div className="font-medium">{campaign.name}</div>
@@ -91,6 +93,11 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
                 {campaign.description}
               </TableCell>
               <TableCell className="">{formatMoney(campaign.budget)}</TableCell>
+              <TableCell className="">
+                <Link href={`/campaign/${campaign.id}`} className="">
+                  <DoorOpenIcon className="h-4 w-4 text-blue-400" />
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -99,7 +106,11 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
   );
 };
 
-const getStatusBadge = (endDate: string) => {
+interface StatusBadgeProps {
+  endDate: string; // End date in ISO string format
+}
+
+export const StatusBadge: React.FC<StatusBadgeProps> = ({ endDate }) => {
   const today = new Date();
   const endDateObj = new Date(endDate);
   const daysRemaining = Math.ceil(

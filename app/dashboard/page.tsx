@@ -5,12 +5,12 @@ import { CampaignTable } from "@/components/campaignsTable";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAccountByAuthId } from "@/lib/accounts/accountsService";
 import { getCampaigns } from "@/lib/campaign/campaignService";
+import { createClient } from "@/utils/supabase/server";
 import {
   formatBudget,
   getTotalActiveCampaigns,
   getTotalCampaigns,
-} from "@/lib/utils";
-import { createClient } from "@/utils/supabase/server";
+} from "@/utils/utils";
 
 export default async function Dashboard() {
   const supabase = createClient();
@@ -33,7 +33,7 @@ export default async function Dashboard() {
   return (
     <>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
-        <Card>
+        <Card className="shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">
               Total Campaigns
@@ -47,7 +47,7 @@ export default async function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">Active Now</CardTitle>
             <ActivityIcon className="w-4 h-4 text-muted-foreground text-green-500" />
@@ -58,7 +58,8 @@ export default async function Dashboard() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+
+        <Card className="shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">
               Total budget spent

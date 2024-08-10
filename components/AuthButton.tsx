@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import { signOut } from "@/app/login/actions";
-import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/server";
+import { cn } from "@/utils/utils";
 
 import { Button } from "./ui/button";
 

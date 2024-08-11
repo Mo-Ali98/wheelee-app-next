@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { signOut } from "@/app/login/actions";
-import { cn } from "@/lib/utils";
+import { signOut } from "@/app/auth/actions";
 import { createClient } from "@/utils/supabase/server";
+import { cn } from "@/utils/utils";
 
 import { Button } from "./ui/button";
 
@@ -26,7 +26,7 @@ export default async function AuthButton({ className }: AuthButtonProps) {
   ) : (
     <Link
       href="/login"
-      className="py-2 px-3 flex rounded-md no-underline bg-black text-white"
+      className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white rounded-md px-4 py-2"
     >
       Login
     </Link>

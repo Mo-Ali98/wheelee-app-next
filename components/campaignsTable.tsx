@@ -113,7 +113,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ endDate }) => {
     (endDateObj.getTime() - today.getTime()) / (1000 * 3600 * 24)
   );
 
-  if (daysRemaining <= 3) {
+  if (daysRemaining <= 3 && endDateObj > today) {
     return (
       <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded">
         Ending Soon

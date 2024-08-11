@@ -32,7 +32,10 @@ export default async function LayoutHeader() {
     return (
       <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 sticky top-0 bg-slate-50/100">
         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <Link className="text-lg" href={"/"}>
+          <Link
+            className="text-lg bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 bg-clip-text text-transparent"
+            href={"/"}
+          >
             Wheelie
           </Link>
           <AuthButton />
@@ -103,7 +106,7 @@ export default async function LayoutHeader() {
               size="icon"
               className="overflow-hidden rounded-full"
             >
-              <div className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 overflow-hidden rounded-full h-8 w-8" />
+              <div className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 overflow-hidden rounded-full h-8 w-8" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

@@ -98,7 +98,7 @@ export default function NewCampaignForm() {
   };
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 lg:py-16">
+    <div className="container mx-auto max-w-4xl px-4 py-10 md:px-6">
       <div className="rounded-lg border bg-background p-6 shadow-sm md:p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -169,6 +169,7 @@ export default function NewCampaignForm() {
                     onSelect={(date: Date | undefined) =>
                       handleDateChange("startDate", date)
                     }
+                    required
                   />
                 </PopoverContent>
               </Popover>
@@ -192,6 +193,7 @@ export default function NewCampaignForm() {
                     mode="single"
                     selected={formData.endDate}
                     onSelect={(date) => handleDateChange("endDate", date)}
+                    required
                   />
                 </PopoverContent>
               </Popover>

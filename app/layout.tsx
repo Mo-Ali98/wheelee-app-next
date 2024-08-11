@@ -30,7 +30,9 @@ export default function RootLayout({
               {children}
             </div>
             <footer className="w-full p-3 flex justify-center text-center text-xs">
-              <p className="">Wheelie</p>
+              <p className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 bg-clip-text text-transparent">
+                Wheelie
+              </p>
             </footer>
           </div>
         </main>

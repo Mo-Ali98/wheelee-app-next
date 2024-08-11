@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { signOut } from "@/app/login/actions";
+import { signOut } from "@/app/auth/actions";
 import { createClient } from "@/utils/supabase/server";
 import { cn } from "@/utils/utils";
 

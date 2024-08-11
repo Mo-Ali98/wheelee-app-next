@@ -69,7 +69,6 @@ export default function NewCampaignForm() {
     if (formData.audience !== "other") {
       setFormData({ ...formData, ["customAudience"]: "" });
     }
-    console.log(formData);
 
     try {
       const response = await fetch("/api/campaigns", {
@@ -225,7 +224,7 @@ export default function NewCampaignForm() {
             />
           </div>
           <Button type="submit" className="ml-auto">
-            Save Campaign
+            Create Campaign
           </Button>
         </form>
         {error && (

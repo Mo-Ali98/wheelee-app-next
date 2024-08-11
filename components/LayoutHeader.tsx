@@ -29,7 +29,7 @@ export default async function LayoutHeader() {
 
   if (!user) {
     return (
-      <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 sticky top-0">
+      <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 sticky top-0 bg-slate-50/100">
         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
           <Link className="text-lg" href={"/"}>
             Wheelie

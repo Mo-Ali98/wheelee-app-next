@@ -67,11 +67,7 @@ export default async function SignUp({
                 required
               />
             </div>
-            <SubmitButton
-              formAction={signUp}
-              className="bg-slate-900 hover:bg-slate-800 text-white rounded-md px-4 py-2 mb-2"
-              pendingText="Registering..."
-            >
+            <SubmitButton formAction={signUp} pendingText="Registering...">
               Register
             </SubmitButton>
           </form>

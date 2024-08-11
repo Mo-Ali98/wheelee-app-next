@@ -26,7 +26,7 @@ export default async function AuthButton({ className }: AuthButtonProps) {
   ) : (
     <Link
       href="/login"
-      className="py-2 px-3 flex rounded-md no-underline bg-black text-white"
+      className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white rounded-md px-4 py-2"
     >
       Login
     </Link>

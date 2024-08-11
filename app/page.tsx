@@ -44,7 +44,7 @@ export default async function Home() {
                 <div className="mt-4 space-x-4">
                   <Link
                     href="/login"
-                    className="inline-flex h-9 items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex h-9 items-center justify-center bg-fuchsia-500 hover:bg-fuchsia-600 text-white rounded-md px-4 py-2"
                     prefetch={false}
                   >
                     Get Started
@@ -64,12 +64,12 @@ export default async function Home() {
           <div className="space-y-12 px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg  px-3 py-1 text-sm text-white bg-black">
+                <div className="inline-block rounded-lg px-3 py-1 text-white bg-fuchsia-500 text-md animate-glow">
                   Key Features
                 </div>
 
                 <h1 className="lg:leading-tighter my-2 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                  Why Choose Our Mobile Vehicle Advertising?{" "}
+                  Why Choose Our Advertising Platform?{" "}
                 </h1>
 
                 <p className="mx-auto max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -79,7 +79,7 @@ export default async function Home() {
               </div>
             </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
                 <h3 className="text-center text-lg font-bold sm:text-left">
                   Wide Reach & High Visibility{" "}
                 </h3>
@@ -90,7 +90,7 @@ export default async function Home() {
                   limitations.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Targeted Advertising{" "}
                 </h3>
@@ -101,7 +101,7 @@ export default async function Home() {
                   audience.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Cost-Effective Marketing{" "}
                 </h3>
@@ -112,7 +112,7 @@ export default async function Home() {
                   and goals.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Customizable Ad Design{" "}
                 </h3>
@@ -122,7 +122,7 @@ export default async function Home() {
                   select the ad format that best fits your campaign.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Real-Time Tracking & Analytics
                 </h3>
@@ -133,7 +133,7 @@ export default async function Home() {
                   success.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Easy Campaign Management
                 </h3>

@@ -67,11 +67,7 @@ export default async function Login({
                 required
               />
             </div>
-            <SubmitButton
-              formAction={emailLogin}
-              className="bg-slate-900 hover:bg-slate-800 text-white rounded-md px-4 py-2 mb-2"
-              pendingText="Logging In..."
-            >
+            <SubmitButton formAction={emailLogin} pendingText="Logging In...">
               Login
             </SubmitButton>
           </form>

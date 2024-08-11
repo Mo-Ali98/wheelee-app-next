@@ -13,8 +13,8 @@ export default function ProfileLayout({
 }) {
   return (
     <div className="flex-1 w-full flex flex-col gap-6 p-6">
-      <h1 className="flex gap-2 items-center text-4xl font-medium">
-        <SettingsIcon className="h-8 w-8" />
+      <h1 className="flex gap-2 items-center font-medium text-2xl lg:text-4xl">
+        <SettingsIcon className="h-6 w-6 lg:h-8 lg:w-8" />
         Settings
       </h1>
       {children}

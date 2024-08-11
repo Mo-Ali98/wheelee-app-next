@@ -14,8 +14,8 @@ export default function DashboardLayout({
   return (
     <div className="flex flex-1 gap-4 w-full">
       <main className="flex flex-col flex-1 items-start gap-6 p-6 w-full">
-        <h1 className="flex gap-2 items-center text-4xl font-medium">
-          <LayoutDashboardIcon className="h-8 w-8" />
+        <h1 className="flex gap-2 items-center font-medium text-2xl lg:text-4xl">
+          <LayoutDashboardIcon className="h-6 w-6 lg:h-8 lg:w-8" />
           Dashboard
         </h1>
         {children}

@@ -32,7 +32,7 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
               <TableHead className="hidden sm:table-cell">Start</TableHead>
               <TableHead className="hidden sm:table-cell">End</TableHead>
               <TableHead className="hidden md:table-cell">Audience</TableHead>
-              <TableHead className="hidden md:table-cell">
+              <TableHead className="hidden md:table-cell max-w-6">
                 Description
               </TableHead>
               <TableHead className="">Budget</TableHead>
@@ -66,7 +66,6 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
             <TableHead className="hidden sm:table-cell">Start</TableHead>
             <TableHead className="hidden sm:table-cell">End</TableHead>
             <TableHead className="hidden md:table-cell">Audience</TableHead>
-            <TableHead className="hidden md:table-cell">Description</TableHead>
             <TableHead className="">Budget</TableHead>
             <TableHead className="">View</TableHead>
           </TableRow>
@@ -88,9 +87,6 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
               </TableCell>
               <TableCell className="hidden md:table-cell">
                 {campaign.audience}
-              </TableCell>
-              <TableCell className="hidden md:table-cell">
-                {campaign.description}
               </TableCell>
               <TableCell className="">{formatMoney(campaign.budget)}</TableCell>
               <TableCell className="">

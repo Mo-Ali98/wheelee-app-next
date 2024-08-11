@@ -1,6 +1,7 @@
 import {
   LayoutDashboardIcon,
   LoaderPinwheelIcon,
+  PlusIcon,
   SettingsIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -30,7 +31,7 @@ export default async function LayoutSideBar() {
         <TooltipProvider>
           <Link
             href="/"
-            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+            className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-fuchsia-500 text-lg font-semibold text-white md:h-8 md:w-8 md:text-base"
             prefetch={false}
           >
             <LoaderPinwheelIcon className="h-6 w-6 transition-all group-hover:scale-110" />
@@ -40,7 +41,7 @@ export default async function LayoutSideBar() {
             <TooltipTrigger asChild>
               <Link
                 href="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-black transition-colors hover:text-fuchsia-500 hover:bg-slate-100 md:h-8 md:w-8"
                 prefetch={false}
               >
                 <LayoutDashboardIcon className="h-5 w-5" />
@@ -48,6 +49,19 @@ export default async function LayoutSideBar() {
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">Dashboard</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/new"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-black transition-colors hover:text-fuchsia-500 hover:bg-slate-100 md:h-8 md:w-8"
+                prefetch={false}
+              >
+                <PlusIcon className="h-5 w-5" />
+                <span className="sr-only">New Ad Campaign</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">New Ad Campaign</TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </nav>
@@ -57,7 +71,7 @@ export default async function LayoutSideBar() {
             <TooltipTrigger asChild>
               <Link
                 href="/profile"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-black transition-colors hover:text-fuchsia-500 hover:bg-slate-100 md:h-8 md:w-8"
                 prefetch={false}
               >
                 <SettingsIcon className="h-5 w-5" />

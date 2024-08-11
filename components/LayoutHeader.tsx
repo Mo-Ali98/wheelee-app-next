@@ -2,6 +2,7 @@ import {
   LayoutDashboardIcon,
   LoaderPinwheelIcon,
   MenuIcon,
+  PlusIcon,
   SettingsIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -18,7 +19,7 @@ import { createClient } from "@/utils/supabase/server";
 
 import AuthButton from "./AuthButton";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
 
 export default async function LayoutHeader() {
   const supabase = await createClient();
@@ -52,28 +53,45 @@ export default async function LayoutHeader() {
           </SheetTrigger>
           <SheetContent side="left" className="sm:max-w-xs">
             <nav className="grid gap-6 text-lg font-medium">
-              <Link
-                href="/"
-                className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-              >
-                <LoaderPinwheelIcon className="h-6 w-6 transition-all group-hover:scale-110" />
-                <span className="sr-only">Wheelie</span>
-              </Link>
-              <Link
-                href="/dashboard"
-                className="flex items-center gap-4 px-2.5 text-foreground"
-              >
-                <LayoutDashboardIcon className="h-5 w-5" />
-                Dashboard
-              </Link>
+              <SheetClose asChild>
+                <Link
+                  href="/"
+                  className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-fuchsia-500 text-lg font-semibold text-white md:text-base"
+                >
+                  <LoaderPinwheelIcon className="h-6 w-6 transition-all group-hover:scale-110" />
+                  <span className="sr-only">Wheelie</span>
+                </Link>
+              </SheetClose>
 
-              <Link
-                href="/profile"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <SettingsIcon className="h-5 w-5" />
-                Settings
-              </Link>
+              <SheetClose asChild>
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-4 px-2.5 text-black hover:text-fuchsia-500"
+                >
+                  <LayoutDashboardIcon className="h-5 w-5" />
+                  Dashboard
+                </Link>
+              </SheetClose>
+
+              <SheetClose asChild>
+                <Link
+                  href="/new"
+                  className="flex items-center gap-4 px-2.5 text-black hover:text-fuchsia-500"
+                >
+                  <PlusIcon className="h-5 w-5" />
+                  New Ad Campaign
+                </Link>
+              </SheetClose>
+
+              <SheetClose asChild>
+                <Link
+                  href="/profile"
+                  className="flex items-center gap-4 px-2.5 text-black hover:text-fuchsia-500"
+                >
+                  <SettingsIcon className="h-5 w-5" />
+                  Settings
+                </Link>
+              </SheetClose>
             </nav>
           </SheetContent>
         </Sheet>

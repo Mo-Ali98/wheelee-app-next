@@ -1,26 +1,21 @@
-import { Progress } from "@radix-ui/react-progress";
 import {
   CalendarIcon,
   DollarSignIcon,
-  TrendingUpIcon,
+  UserIcon,
   UsersIcon,
 } from "lucide-react";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 import { StatusBadge } from "@/components/campaignsTable";
 import { BarChartExample, PieChartExample } from "@/components/chartExaample";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAccountById } from "@/lib/accounts/accountsService";
 import { getCampaign } from "@/lib/campaign/campaignService";
 import { createClient } from "@/utils/supabase/server";
 import { formatMoney } from "@/utils/utils";
+
+import placeholder from "../../../assets/placeholder.svg";
 
 export default async function Campaign({
   params,
@@ -48,62 +43,48 @@ export default async function Campaign({
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-          <Card className="sm:col-span-3" x-chunk="dashboard-05-chunk-0">
+          <Card className="sm:col-span-4" x-chunk="dashboard-05-chunk-0">
             <CardHeader className="pb-3">
               <CardTitle className="text-4xl">{campaign.name}</CardTitle>
-              <CardDescription>
-                <div className="flex flex-col gap-1 mt-2 my-2">
-                  <div className="flex items-center gap-2">
-                    <UsersIcon className="w-4 h-4 text-fuchsia-500" />
-                    <span>Audience: {campaign.audience}</span>
-                    {campaign.customAudience && (
-                      <div className="flex items-center">
-                        <span>({campaign.customAudience})</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CalendarIcon className="h-4 w-4 text-blue-400" />
-                    <DateRange
-                      start_date={campaign.start_date}
-                      end_date={campaign.end_date}
-                    />
-                    <StatusBadge endDate={campaign.end_date} />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <DollarSignIcon className="w-4 h-4 text-green-600" />
-                    <span>Budget: {formatMoney(campaign.budget)}</span>
-                  </div>
-                </div>
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card x-chunk="dashboard-05-chunk-1">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-xl">Owner</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="mt-4 grid gap-2">
+              <CardContent className="flex flex-col gap-1 mt-2 my-2 py-2 px-0">
                 <div className="flex items-center gap-2">
                   <UsersIcon className="w-4 h-4 text-fuchsia-500" />
+                  <span>Audience: {campaign.audience}</span>
+                  {campaign.customAudience && (
+                    <div className="flex items-center">
+                      <span>({campaign.customAudience})</span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex items-center gap-2">
+                  <CalendarIcon className="h-4 w-4 text-blue-400" />
+                  <DateRange
+                    start_date={campaign.start_date}
+                    end_date={campaign.end_date}
+                  />
+                  <StatusBadge endDate={campaign.end_date} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <DollarSignIcon className="w-4 h-4 text-green-600" />
+                  <span>Budget: {formatMoney(campaign.budget)}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <UserIcon className="w-4 h-4 text-yellow-400" />
                   <span>
-                    {owner.first_name} {owner.last_name}
+                    Owner: {owner.first_name} {owner.last_name}
                   </span>
                 </div>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Progress value={25} aria-label="25% increase" />
-            </CardFooter>
+              </CardContent>
+            </CardHeader>
           </Card>
         </div>
         <div className="grid gap-4 grid-cols-1">
           <Card>
             <CardHeader className="pb-3">
               <CardTitle>Description</CardTitle>
-              <CardDescription className="text-balance leading-relaxed p-2">
+              <CardContent className="text-balance leading-relaxed p-2">
                 {campaign.description}
-              </CardDescription>
+              </CardContent>
             </CardHeader>
           </Card>
         </div>
@@ -115,27 +96,20 @@ export default async function Campaign({
           </div>
         </section>
       </div>
-      <Card className="space-y-6">
-        <CardHeader className="pb-3">
-          <CardTitle>Performance</CardTitle>
-          <CardDescription className="text-balance leading-relaxed p-2">
-            <div className="mt-4 grid gap-2">
-              <div className="flex items-center space-x-2 ">
-                <TrendingUpIcon className="h-4 w-4 text-green-500" />
-                <span>Impressions: 1.2M</span>
-              </div>
-              <div className="flex items-center space-x-2 ">
-                <TrendingUpIcon className="h-4 w-4 text-green-500" />
-                <span>Clicks: 120K</span>
-              </div>
-              <div className="flex items-center space-x-2 ">
-                <TrendingUpIcon className="h-4 w-4 text-green-500" />
-                <span>Conversions: 15K</span>
-              </div>
-            </div>{" "}
-          </CardDescription>
-        </CardHeader>
-      </Card>
+      <div className="flex flex-col gap-8">
+        <Card className="space-y-6">
+          <CardHeader className="pb-3">
+            <CardTitle>Ad Poster</CardTitle>
+            <CardContent className="text-balance leading-relaxed p-2">
+              <Image
+                src={placeholder}
+                alt="Hero"
+                className="mx-auto aspect-[2/1] overflow-hidden rounded-xl object-cover"
+              />
+            </CardContent>
+          </CardHeader>
+        </Card>
+      </div>
     </main>
   );
 }

@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
@@ -28,6 +30,8 @@ export default function RootLayout({
             <LayoutHeader />
             <div className="flex-1 w-full flex flex-col gap-20 items-center md:pl-14 md:pr-10">
               {children}
+              <SpeedInsights />
+              <Analytics />
             </div>
             <footer className="w-full p-3 flex justify-center text-center text-xs">
               <p className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 bg-clip-text text-transparent">

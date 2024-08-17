@@ -30,7 +30,7 @@ export default async function LayoutHeader() {
 
   if (!user) {
     return (
-      <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 p-10 sticky top-0 bg-slate-50/100">
+      <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 p-10 sticky top-0 bg-slate-50/100 z-50">
         <div className="w-full max-w-4xl flex justify-between items-center">
           <Link
             href="/"

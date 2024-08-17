@@ -28,18 +28,18 @@ export default function RootLayout({
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <LayoutSideBar />
             <LayoutHeader />
-            <div className="flex-1 w-full flex flex-col gap-20 items-center md:pl-14 md:pr-10">
+            <div className="flex-1 w-full flex flex-col gap-20 items-center">
               {children}
               <SpeedInsights />
               <Analytics />
             </div>
-            <footer className="w-full p-3 flex justify-center text-center text-xs">
-              <p className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 bg-clip-text text-transparent">
-                Wheelie
-              </p>
-            </footer>
           </div>
         </main>
+        <footer className="w-full p-3 flex justify-center text-center text-xs sticky bottom-0 ">
+          <p className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 bg-clip-text text-transparent">
+            Wheelie
+          </p>
+        </footer>
       </body>
     </html>
   );

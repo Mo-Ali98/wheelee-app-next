@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { SubmitButton } from "@/components/submit-button";
@@ -8,9 +7,9 @@ import { Label } from "@/components/ui/label";
 import { createClient } from "@/utils/supabase/server";
 
 import placeholder from "../../assets/placeholder.svg";
-import { emailLogin } from "../auth/actions";
+import { requestPasswordReset } from "../auth/actions";
 
-export default async function Login({
+export default async function ForgotPassword({
   searchParams,
 }: {
   searchParams: { message: string };
@@ -30,9 +29,9 @@ export default async function Login({
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Login</h1>
+            <h1 className="text-3xl font-bold">Forgot your password?</h1>
             <p className="text-balance text-muted-foreground">
-              Enter your email below to login to your account
+              Enter your email below to reset your password
             </p>
           </div>
 
@@ -47,37 +46,16 @@ export default async function Login({
                 required
               />
             </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>{" "}
-              </div>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                name="password"
-                required
-              />
-            </div>
-            <SubmitButton formAction={emailLogin} pendingText="Logging In...">
-              Login
+            <SubmitButton
+              formAction={requestPasswordReset}
+              pendingText="Sending Link..."
+            >
+              Send reset link
             </SubmitButton>
           </form>
-          <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" className="underline">
-              Sign up
-            </Link>
-          </div>
 
           {searchParams?.message && (
-            <p className="mt-4 p-4 bg-red-500 text-white text-center rounded-md">
+            <p className="mt-4 p-4 bg-blue-500 text-white text-center rounded-md">
               {searchParams.message}
             </p>
           )}

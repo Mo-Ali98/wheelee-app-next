@@ -8,6 +8,8 @@ export async function GET(request: NextRequest) {
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = searchParams.get("next") ?? "/";
+  const redirectTo = request.nextUrl.clone();
+  redirectTo.pathname = next;
 
   if (token_hash && type) {
     const supabase = createClient();
@@ -18,12 +20,13 @@ export async function GET(request: NextRequest) {
     });
 
     if (!error) {
-      //TODO: possibly populate the user in public user table on confirmation
-
-      return NextResponse.redirect(next);
+      return NextResponse.redirect(redirectTo);
     }
   }
 
+  console.error("Error verifying OTP with token:", token_hash);
+
+  redirectTo.pathname = "/auth/error";
   // return the user to an error page with some instructions
-  return NextResponse.redirect("/login?message=Could not verify OTP");
+  return NextResponse.redirect(redirectTo);
 }

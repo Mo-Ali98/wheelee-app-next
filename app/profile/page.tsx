@@ -33,7 +33,7 @@ export default async function Profile() {
   const name = `${account.first_name} ${account?.last_name}`;
 
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 w-full">
       <Card>
         <CardHeader>
           <CardTitle>Profile</CardTitle>

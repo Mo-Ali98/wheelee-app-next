@@ -11,7 +11,7 @@ export default function CampaignPageLayout({
   params: { slug: string };
 }) {
   return (
-    <div className="flex-1 w-full flex flex-col gap-6 p-6">
+    <div className="flex-1 w-full flex flex-col gap-6 p-6  md:pl-14 md:pr-10">
       <h1 className="flex gap-2 items-center text-4xl font-medium"></h1>
       {children}
     </div>

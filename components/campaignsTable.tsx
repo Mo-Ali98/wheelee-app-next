@@ -3,7 +3,13 @@ import { DoorOpenIcon } from "lucide-react";
 import Link from "next/link";
 
 import { type Campaign } from "@/app/models/models";
-import { Card } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -55,49 +61,59 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
     );
   }
   return (
-    <Card className="p-5 w-full shadow-sm">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="hidden sm:table-cell">
-              <span className="sr-only">Image</span>
-            </TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead className="hidden sm:table-cell">Start</TableHead>
-            <TableHead className="hidden sm:table-cell">End</TableHead>
-            <TableHead className="hidden md:table-cell">Audience</TableHead>
-            <TableHead className="">Budget</TableHead>
-            <TableHead className="">View</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {campaigns.map((campaign) => (
-            <TableRow key={campaign.id} className="bg-accent">
-              <TableCell className="hidden sm:table-cell">
-                <StatusBadge endDate={campaign.end_date} />
-              </TableCell>
-              <TableCell>
-                <div className="font-medium">{campaign.name}</div>
-              </TableCell>
-              <TableCell className="hidden sm:table-cell">
-                {campaign.start_date}
-              </TableCell>
-              <TableCell className="hidden sm:table-cell">
-                {campaign.end_date}
-              </TableCell>
-              <TableCell className="hidden md:table-cell">
-                {campaign.audience}
-              </TableCell>
-              <TableCell className="">{formatMoney(campaign.budget)}</TableCell>
-              <TableCell className="">
-                <Link href={`/campaign/${campaign.id}`} className="">
-                  <DoorOpenIcon className="h-4 w-4 text-blue-400" />
-                </Link>
-              </TableCell>
+    <Card className="w-full shadow-sm">
+      <CardHeader>
+        <CardTitle>Campaigns</CardTitle>
+        <CardDescription>
+          Select a campaign and view it's performance.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="hidden sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead className="hidden sm:table-cell">Start</TableHead>
+              <TableHead className="hidden sm:table-cell">End</TableHead>
+              <TableHead className="hidden md:table-cell">Audience</TableHead>
+              <TableHead className="">Budget</TableHead>
+              <TableHead className="">View</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {campaigns.map((campaign) => (
+              <TableRow key={campaign.id} className="bg-accent">
+                <TableCell className="hidden sm:table-cell">
+                  <StatusBadge endDate={campaign.end_date} />
+                </TableCell>
+                <TableCell>
+                  <div className="font-medium">{campaign.name}</div>
+                </TableCell>
+                <TableCell className="hidden sm:table-cell">
+                  {campaign.start_date}
+                </TableCell>
+                <TableCell className="hidden sm:table-cell">
+                  {campaign.end_date}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {campaign.audience}
+                </TableCell>
+                <TableCell className="">
+                  {formatMoney(campaign.budget)}
+                </TableCell>
+                <TableCell className="">
+                  <Link href={`/campaign/${campaign.id}`} className="">
+                    <DoorOpenIcon className="h-4 w-4 text-blue-400" />
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </CardContent>
     </Card>
   );
 };

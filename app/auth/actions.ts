@@ -55,3 +55,42 @@ export async function signOut() {
   await supabase.auth.signOut();
   redirect("/login");
 }
+
+export async function requestPasswordReset(formData: FormData) {
+  const supabase = createClient();
+
+  const email = formData.get("email") as string;
+
+  if (!email) {
+    return { error: "Email is required" };
+  }
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email);
+
+  if (error) {
+    console.log(error, `Failed to send password reset email: ${email}`);
+  }
+
+  redirect(
+    "/forgot-password?message=Password reset email sent. Check your inbox."
+  );
+}
+
+export async function resetPassword(formData: FormData) {
+  const supabase = createClient();
+
+  const newPassword = formData.get("newPassword") as string;
+
+  const { error } = await supabase.auth.updateUser({
+    password: newPassword,
+  });
+
+  if (error) {
+    console.error("Error resetting password:", error.message);
+    redirect("/reset-password?message=Error resetting password");
+  }
+
+  redirect(
+    "/login?message=Password reset successfully. You can now log in with your new password."
+  );
+}

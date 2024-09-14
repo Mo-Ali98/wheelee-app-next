@@ -9,13 +9,12 @@ import { redirect } from "next/navigation";
 
 import { StatusBadge } from "@/components/campaignsTable";
 import { BarChartExample, PieChartExample } from "@/components/chartExaample";
+import ImageUploadWithSupabase from "@/components/ImageUploadSupabase";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAccountById } from "@/lib/accounts/accountsService";
 import { getCampaign } from "@/lib/campaign/campaignService";
 import { createClient } from "@/utils/supabase/server";
 import { formatMoney } from "@/utils/utils";
-
-import placeholder from "../../../assets/placeholder.svg";
 
 export default async function Campaign({
   params,
@@ -101,11 +100,17 @@ export default async function Campaign({
           <CardHeader className="pb-3">
             <CardTitle>Ad Poster</CardTitle>
             <CardContent className="text-balance leading-relaxed p-2">
-              <Image
-                src={placeholder}
-                alt="Hero"
-                className="mx-auto aspect-[2/1] overflow-hidden rounded-xl object-cover"
-              />
+              {campaign.image ? (
+                <Image
+                  src={campaign.image}
+                  alt="Poster"
+                  className="mx-auto aspect-[2/1] overflow-hidden rounded-xl object-cover"
+                  width={500}
+                  height={500}
+                />
+              ) : (
+                <ImageUploadWithSupabase campaignId={campaign.id} />
+              )}
             </CardContent>
           </CardHeader>
         </Card>

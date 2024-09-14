@@ -25,4 +25,5 @@ export interface Campaign {
   created_at: string; // Creation timestamp as ISO string
   createdBy: string; // Creator's UUID as a string
   customAudience: string; // Custom audience, if applicable
+  image: string;
 }

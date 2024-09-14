@@ -5,7 +5,6 @@ import {
   Route,
   UserIcon,
   Users,
-  UsersIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -16,11 +15,12 @@ import { BarChartExample, PieChartExample } from "@/components/chartExaample";
 import ImageUploadWithSupabase from "@/components/ImageUploadSupabase";
 import HotspotMapRoute from "@/components/MapWithRoute";
 import { StatCard } from "@/components/StatCard";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAccountById } from "@/lib/accounts/accountsService";
 import { getCampaign } from "@/lib/campaign/campaignService";
 import { createClient } from "@/utils/supabase/server";
-import { formatMoney } from "@/utils/utils";
+import { formatDate, formatMoney } from "@/utils/utils";
 
 export default async function Campaign({
   params,
@@ -50,34 +50,42 @@ export default async function Campaign({
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
           <Card className="sm:col-span-4" x-chunk="dashboard-05-chunk-0">
             <CardHeader className="pb-3">
-              <CardTitle className="text-4xl">{campaign.name}</CardTitle>
-              <CardContent className="flex flex-col gap-1 mt-2 my-2 py-2 px-0">
-                <div className="flex items-center gap-2">
-                  <UsersIcon className="w-4 h-4 text-fuchsia-500" />
-                  <span>Audience: {campaign.audience}</span>
-                  {campaign.customAudience && (
-                    <div className="flex items-center">
-                      <span>({campaign.customAudience})</span>
-                    </div>
-                  )}
+              <CardTitle className="text-4xl font-bold">
+                {campaign.name}
+              </CardTitle>
+
+              <CardContent className="grid gap-4 p-0 pt-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-5 h-5 text-fuchsia-500" />
+                    <span className="text-md font-medium">Audience:</span>
+                    <Badge variant="secondary">{campaign.audience}</Badge>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <DollarSignIcon className="w-5 h-5 text-green-600" />
+                    <span className="text-md font-medium">Budget:</span>
+                    <Badge variant="secondary">
+                      {formatMoney(campaign.budget)}
+                    </Badge>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CalendarIcon className="h-4 w-4 text-blue-400" />
-                  <DateRange
-                    start_date={campaign.start_date}
-                    end_date={campaign.end_date}
-                  />
-                  <StatusBadge endDate={campaign.end_date} />
-                </div>
-                <div className="flex items-center gap-2">
-                  <DollarSignIcon className="w-4 h-4 text-green-600" />
-                  <span>Budget: {formatMoney(campaign.budget)}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <UserIcon className="w-4 h-4 text-yellow-400" />
-                  <span>
-                    Owner: {owner.first_name} {owner.last_name}
-                  </span>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-2">
+                    <UserIcon className="w-5 h-5 text-yellow-400" />
+                    <span className="text-md font-medium">Owner:</span>
+                    <span className="text-md">
+                      {owner.first_name} {owner.last_name}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CalendarIcon className="w-5 h-5 text-blue-400" />
+                    <span className="text-md font-medium">Duration:</span>
+                    <span className="text-md">
+                      {formatDate(campaign.start_date)} to{" "}
+                      {formatDate(campaign.end_date)}
+                    </span>
+                    <StatusBadge endDate={campaign.end_date} />
+                  </div>
                 </div>
               </CardContent>
             </CardHeader>
@@ -150,32 +158,3 @@ export default async function Campaign({
     </main>
   );
 }
-
-interface DateRangeProps {
-  start_date: string; // Start date in ISO string format
-  end_date: string; // End date in ISO string format
-}
-
-const DateRange: React.FC<DateRangeProps> = ({ start_date, end_date }) => {
-  // Convert the date strings to Date objects
-  const start = new Date(start_date);
-  const end = new Date(end_date);
-
-  // Format the start date
-  const formattedStartDate = start.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-  });
-
-  // Format the end date
-  const formattedEndDate = end.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  // Combine the formatted dates into the desired string
-  const formattedDateRange = `${formattedStartDate} - ${formattedEndDate}`;
-
-  return <span>{formattedDateRange}</span>;
-};

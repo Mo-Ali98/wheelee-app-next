@@ -59,3 +59,11 @@ export function generateRandomCoordinatesInLondon(
 
   return coordinates;
 }
+
+export const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString("en-GB", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};

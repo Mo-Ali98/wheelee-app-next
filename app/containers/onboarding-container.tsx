@@ -25,7 +25,7 @@ export const Onboarding: React.FC = () => {
             <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
             <div className="w-full flex flex-col items-center justify-center space-y-6">
               <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-gray-100">
-                Welcome to Wheelie
+                Welcome to Wheelee
               </h1>
               <p className="text-lg text-center text-gray-600 dark:text-gray-400 max-w-lg">
                 This is an onboarding screen. We're glad to have you here. Let's

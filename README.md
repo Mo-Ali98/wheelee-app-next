@@ -1,4 +1,4 @@
-  <h1 align="center">Wheelie Ad</h1>
+  <h1 align="center">Wheelee Ad</h1>
 
 ## Clone and run locally
 

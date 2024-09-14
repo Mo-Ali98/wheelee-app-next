@@ -1,15 +1,21 @@
 import {
   CalendarIcon,
+  Clock,
   DollarSignIcon,
+  Route,
   UserIcon,
+  Users,
   UsersIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
+import BudgetBreakdown from "@/components/BudgetBreakdown";
 import { StatusBadge } from "@/components/campaignsTable";
 import { BarChartExample, PieChartExample } from "@/components/chartExaample";
 import ImageUploadWithSupabase from "@/components/ImageUploadSupabase";
+import HotspotMapRoute from "@/components/MapWithRoute";
+import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAccountById } from "@/lib/accounts/accountsService";
 import { getCampaign } from "@/lib/campaign/campaignService";
@@ -77,6 +83,7 @@ export default async function Campaign({
             </CardHeader>
           </Card>
         </div>
+
         <div className="grid gap-4 grid-cols-1">
           <Card>
             <CardHeader className="pb-3">
@@ -88,10 +95,30 @@ export default async function Campaign({
           </Card>
         </div>
 
-        <section className="">
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <BarChartExample />
-            <PieChartExample />
+        <section className="grid gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <StatCard
+              title="Total Drivers"
+              value={0}
+              icon={Users}
+              subValue="For this campaign"
+            />
+            <StatCard
+              title="Total Hours Driven"
+              value={87}
+              icon={Clock}
+              subValue="Across all drivers"
+            />
+            <StatCard
+              title="Total Distance"
+              value={`${10230} km`}
+              icon={Route}
+              subValue="Avg: 1,000 km per driver"
+            />
+          </div>
+
+          <div className="grid gap-4 grid-cols-1">
+            <HotspotMapRoute />
           </div>
         </section>
       </div>
@@ -114,6 +141,11 @@ export default async function Campaign({
             </CardContent>
           </CardHeader>
         </Card>
+        <BudgetBreakdown totalBudget={campaign.budget} className="space-y-6" />
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
+          <BarChartExample />
+          <PieChartExample />
+        </div>
       </div>
     </main>
   );

@@ -25,7 +25,7 @@ export default async function Dashboard() {
 
   const account = await getAccountByAuthId(user.id);
 
-  if (!account || !account.onboarded) {
+  if (!account) {
     redirect("/welcome");
   }
 

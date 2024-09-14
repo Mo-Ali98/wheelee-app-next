@@ -17,7 +17,7 @@ export default async function Home() {
   if (user) {
     const account = await getAccountByAuthId(user.id);
 
-    if (!account || !account.onboarded) {
+    if (!account) {
       redirect("/welcome");
     }
 

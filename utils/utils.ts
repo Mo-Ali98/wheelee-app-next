@@ -38,3 +38,24 @@ export const formatMoney = (amount: number): string => {
     maximumFractionDigits: 2,
   })}`;
 };
+
+export function generateRandomCoordinatesInLondon(
+  numPoints: number
+): [number, number][] {
+  const bounds = {
+    latMin: 51.28676, // Southern bound of London
+    latMax: 51.691874, // Northern bound of London
+    lonMin: -0.510375, // Western bound of London
+    lonMax: 0.334015, // Eastern bound of London
+  };
+
+  const coordinates: [number, number][] = [];
+
+  for (let i = 0; i < numPoints; i++) {
+    const lat = bounds.latMin + Math.random() * (bounds.latMax - bounds.latMin);
+    const lon = bounds.lonMin + Math.random() * (bounds.lonMax - bounds.lonMin);
+    coordinates.push([lat, lon]);
+  }
+
+  return coordinates;
+}

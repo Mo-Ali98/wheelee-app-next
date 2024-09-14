@@ -17,7 +17,7 @@ export default async function Home() {
   if (user) {
     const account = await getAccountByAuthId(user.id);
 
-    if (!account || !account.onboarded) {
+    if (!account) {
       redirect("/welcome");
     }
 
@@ -159,7 +159,7 @@ export default async function Home() {
                 </h2>
                 <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                   Hear from our satisfied clients about their experience with
-                  Wheelie.
+                  Wheelee.
                 </p>
               </div>
             </div>

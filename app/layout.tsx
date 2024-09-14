@@ -12,7 +12,7 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Wheelie",
+  title: "Wheelee",
   description: "Put Your Ad in Motion!",
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
         </main>
         <footer className="w-full p-3 flex justify-center text-center text-xs sticky bottom-0 ">
           <p className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 bg-clip-text text-transparent">
-            Wheelie
+            Wheelee
           </p>
         </footer>
       </body>

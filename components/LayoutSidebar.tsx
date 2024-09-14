@@ -35,7 +35,7 @@ export default async function LayoutSideBar() {
             prefetch={false}
           >
             <LoaderPinwheelIcon className="h-6 w-6 transition-all group-hover:scale-110" />
-            <span className="sr-only">Wheelie</span>
+            <span className="sr-only">Wheelee</span>
           </Link>
           <Tooltip>
             <TooltipTrigger asChild>

@@ -38,7 +38,7 @@ export default async function LayoutHeader() {
           >
             <LoaderPinwheelIcon className="h-10 w-10 rounded-full bg-fuchsia-500 text-lg font-semibold text-white md:text-base p-1" />
             <span className="text-3xl bg-gradient-to-r from-fuchsia-500 via-fuchsia-500 to-fuchsia-400 bg-clip-text text-transparent">
-              Wheelie
+              Wheelee
             </span>
           </Link>
 
@@ -66,7 +66,7 @@ export default async function LayoutHeader() {
                   className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-fuchsia-500 text-lg font-semibold text-white md:text-base"
                 >
                   <LoaderPinwheelIcon className="h-6 w-6 transition-all group-hover:scale-110" />
-                  <span className="sr-only">Wheelie</span>
+                  <span className="sr-only">Wheelee</span>
                 </Link>
               </SheetClose>
 

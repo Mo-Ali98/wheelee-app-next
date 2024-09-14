@@ -18,7 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatMoney } from "@/utils/utils";
+import { formatDate, formatMoney } from "@/utils/utils";
 
 interface CampaignTableProps {
   campaigns: Campaign[];
@@ -93,10 +93,10 @@ export const CampaignTable: React.FC<CampaignTableProps> = ({ campaigns }) => {
                   <div className="font-medium">{campaign.name}</div>
                 </TableCell>
                 <TableCell className="hidden sm:table-cell">
-                  {campaign.start_date}
+                  {formatDate(campaign.start_date)}
                 </TableCell>
                 <TableCell className="hidden sm:table-cell">
-                  {campaign.end_date}
+                  {formatDate(campaign.end_date)}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {campaign.audience}

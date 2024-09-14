@@ -62,7 +62,7 @@ export function generateRandomCoordinatesInLondon(
 
 export const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-GB", {
-    month: "long",
+    month: "short",
     day: "numeric",
     year: "numeric",
   });

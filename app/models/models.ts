@@ -27,3 +27,15 @@ export interface Campaign {
   customAudience: string; // Custom audience, if applicable
   image: string;
 }
+
+export interface CampaignDriver {
+  id: string;
+  campaign_id: string;
+  earnings: number;
+  distance_travelled: number;
+  coordinates: JSON;
+  status: string;
+  user_id: string;
+  time_travelled: number;
+  created_at: string;
+}

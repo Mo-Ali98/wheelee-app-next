@@ -18,7 +18,10 @@ import { StatCard } from "@/components/StatCard";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAccountById } from "@/lib/accounts/accountsService";
-import { getCampaign } from "@/lib/campaign/campaignService";
+import {
+  getCampaign,
+  getCampaignDriverAggregates,
+} from "@/lib/campaign/campaignService";
 import { createClient } from "@/utils/supabase/server";
 import { formatDate, formatMoney } from "@/utils/utils";
 
@@ -43,6 +46,9 @@ export default async function Campaign({
   if (!user || !campaign) {
     return redirect("/");
   }
+
+  const { totalDrivers, totalDistanceTravelled, totalHours } =
+    await getCampaignDriverAggregates(campaign.id);
 
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
@@ -107,21 +113,21 @@ export default async function Campaign({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <StatCard
               title="Total Drivers"
-              value={0}
+              value={totalDrivers}
               icon={Users}
               subValue="For this campaign"
             />
             <StatCard
               title="Total Hours Driven"
-              value={87}
+              value={totalHours}
               icon={Clock}
               subValue="Across all drivers"
             />
             <StatCard
               title="Total Distance"
-              value={`${10230} km`}
+              value={`${totalDistanceTravelled} km`}
               icon={Route}
-              subValue="Avg: 1,000 km per driver"
+              subValue="Across all drivers"
             />
           </div>
 

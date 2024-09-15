@@ -29,8 +29,8 @@ export const StatCard: React.FC<StatCardProps> = ({
             <p className="text-xs text-muted-foreground">{subValue}</p>
           )}
         </div>
-        <div className="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200">
-          <Icon className="h-6 w-6 text-black hover:scale-110 skew-y-3 transition" />
+        <div className="group h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200">
+          <Icon className="h-5 w-5 text-black group-hover:scale-110 group-hover:skew-y-3 transition-transform" />
         </div>
       </div>
     </CardContent>

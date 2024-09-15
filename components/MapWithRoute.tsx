@@ -2,11 +2,13 @@
 
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { MapPin } from "lucide-react";
 import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
 
 import { generateRandomCoordinatesInLondon } from "@/utils/utils";
 
+import LocationCard from "./Locations";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 const MapContainer = dynamic(
@@ -21,9 +23,6 @@ const Marker = dynamic(
   () => import("react-leaflet").then((mod) => mod.Marker),
   { ssr: false }
 );
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
-  ssr: false,
-});
 const Polyline = dynamic(
   () => import("react-leaflet").then((mod) => mod.Polyline),
   { ssr: false }
@@ -61,29 +60,44 @@ const HotspotMapRoute: React.FC = () => {
       <CardHeader>
         <CardTitle>Driver Activity Map</CardTitle>
       </CardHeader>
-      <CardContent className="">
-        <div style={{ width: "100%", height: "600px" }}>
-          <MapContainer
-            center={[51.5074, -0.1276]} // Approximate center of London
-            zoom={10} // Adjust zoom level to fit the whole city
-            style={{ width: "100%", height: "100%" }}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {coordinates.map((coord, index) => (
-              <Marker
+      <CardContent>
+        <div className="flex flex-row gap-2 flex-1">
+          <div style={{ width: "70%", height: "500px" }}>
+            <MapContainer
+              center={[51.5074, -0.1276]} // Approximate center of London
+              zoom={10} // Adjust zoom level to fit the whole city
+              style={{ width: "100%", height: "100%" }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              {coordinates.map((coord, index) => (
+                <Marker
+                  key={index}
+                  position={[coord[0], coord[1]]}
+                  icon={customIcon}
+                />
+              ))}
+              {/* Draw a route using Polyline */}
+              <Polyline positions={coordinates} color="blue" />
+            </MapContainer>
+          </div>
+          <div className="flex flex-col gap-2 w-[30%]">
+            <p className="flex flex-row gap-1 text-lg">
+              <MapPin className="h-6 w-6" />
+              Locations
+            </p>
+
+            {coordinates.slice(0, 4).map((coord, index) => (
+              <LocationCard
                 key={index}
-                position={[coord[0], coord[1]]}
-                icon={customIcon}
-              >
-                <Popup>Hotspot {index + 1}</Popup>
-              </Marker>
+                lat={coord[0]}
+                lng={coord[1]}
+                index={index}
+              />
             ))}
-            {/* Draw a route using Polyline */}
-            <Polyline positions={coordinates} color="blue" />
-          </MapContainer>
+          </div>
         </div>
       </CardContent>
     </Card>

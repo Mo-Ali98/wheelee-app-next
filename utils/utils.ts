@@ -67,3 +67,40 @@ export const formatDate = (date: string) => {
     year: "numeric",
   });
 };
+
+export interface SimplifiedAddress {
+  neighbourhood?: string;
+  suburb?: string;
+  city?: string;
+  state_district?: string;
+}
+
+export async function fetchNearbyPlaces(
+  latitude: number,
+  longitude: number
+): Promise<SimplifiedAddress> {
+  const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=15&addressdetails=1`;
+
+  try {
+    const response = await fetch(url);
+    console.log(response);
+    if (!response.ok) {
+      throw new Error("Failed to fetch nearby places");
+    }
+
+    const data = await response.json();
+    return {
+      neighbourhood: data.address?.neighbourhood || "",
+      suburb: data.address?.suburb || "",
+      city: data.address?.city || "",
+      state_district: data.address?.state_district || "",
+    };
+  } catch (error) {
+    console.error("Error fetching nearby places:", error);
+    return {
+      neighbourhood: "",
+      suburb: "",
+      city: "",
+    };
+  }
+}

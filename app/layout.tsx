@@ -5,6 +5,7 @@ import "./globals.css";
 
 import LayoutHeader from "@/components/LayoutHeader";
 import LayoutSideBar from "@/components/LayoutSidebar";
+import { cn } from "@/utils/utils";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -22,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-slate-50 text-black">
+    <html lang="en" className={cn(GeistSans.className, "")}>
+      <body className="bg-slate-50 text-black dark:bg-neutral-900 dark:text-zinc-300">
         <main className="min-h-screen flex flex-col items-center">
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
             <LayoutSideBar />

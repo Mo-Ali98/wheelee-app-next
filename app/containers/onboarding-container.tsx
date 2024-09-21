@@ -21,7 +21,7 @@ export const Onboarding: React.FC = () => {
     case 1:
       return (
         <OnboardingContainer>
-          <section className="w-full flex flex-col justify-center items-center bg-gray-50 dark:bg-gray-900">
+          <section className="w-full flex flex-col justify-center items-center">
             <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
             <div className="w-full flex flex-col items-center justify-center space-y-6">
               <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-gray-100">
@@ -35,7 +35,7 @@ export const Onboarding: React.FC = () => {
                 <input
                   type="text"
                   id="name"
-                  className="block w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-neutral-800 placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your first name"
                   required
                   value={fName}
@@ -45,7 +45,7 @@ export const Onboarding: React.FC = () => {
                 <input
                   type="text"
                   id="name"
-                  className="block w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-neutral-800 placeholder-gray-500 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your last name"
                   required
                   value={lName}
@@ -60,7 +60,7 @@ export const Onboarding: React.FC = () => {
     case 2:
       return (
         <OnboardingContainer>
-          <section className="w-full flex flex-col justify-center items-center bg-gray-50 dark:bg-gray-900">
+          <section className="w-full flex flex-col justify-center items-center">
             <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
             <div className="flex flex-col items-center justify-center space-y-6">
               <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-gray-100">

@@ -137,7 +137,7 @@ const ReviewCard = ({
 
 export const MarqueeDemo = () => {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-white py-20 md:shadow-xl">
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-white py-20 md:shadow-xl dark:bg-zinc-700 dark:border-neutral-900">
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
@@ -148,8 +148,8 @@ export const MarqueeDemo = () => {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:bg-gradient-to-r dark:from-zinc-700"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:bg-gradient-to-l dark:from-zinc-700"></div>
     </div>
   );
 };

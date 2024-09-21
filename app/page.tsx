@@ -79,65 +79,65 @@ export default async function Home() {
               </div>
             </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105 dark:bg-zinc-700 dark:text-zinc-300">
                 <h3 className="text-center text-lg font-bold sm:text-left">
                   Wide Reach & High Visibility{" "}
                 </h3>
-                <p className="text-center text-sm text-gray-500 sm:text-left">
+                <p className="text-center text-sm text-gray-500 sm:text-left dark:text-zinc-400">
                   Your ads travel through high-traffic areas, reaching thousands
                   of potential customers daily. Target a broad and varied
                   audience, from commuters to pedestrians, without geographic
                   limitations.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105 dark:bg-zinc-700 dark:text-zinc-300">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Targeted Advertising{" "}
                 </h3>
-                <p className="text-center text-sm text-gray-500 sm:text-left">
+                <p className="text-center text-sm text-gray-500 sm:text-left dark:text-zinc-400">
                   Customize your campaign to specific regions, neighbourhood's,
                   or routes for maximum impact. Choose vehicles that align with
                   your target demographic, ensuring your ads reach the right
                   audience.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105 dark:bg-zinc-700 dark:text-zinc-300">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Cost-Effective Marketing{" "}
                 </h3>
-                <p className="text-center text-sm text-gray-500 sm:text-left">
+                <p className="text-center text-sm text-gray-500 sm:text-left dark:text-zinc-400">
                   Competitive pricing models that provide high ROI compared to
                   traditional billboards and digital ads. Choose from various
                   campaign lengths and ad formats to suit your marketing budget
                   and goals.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105 dark:bg-zinc-700 dark:text-zinc-300">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Customizable Ad Design{" "}
                 </h3>
-                <p className="text-center text-sm text-gray-500 sm:text-left">
+                <p className="text-center text-sm text-gray-500 sm:text-left dark:text-zinc-400">
                   From vinyl wraps to magnetic signs, select the ad format that
                   best fits your campaign. From vinyl wraps to magnetic signs,
                   select the ad format that best fits your campaign.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105 dark:bg-zinc-700 dark:text-zinc-300">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Real-Time Tracking & Analytics
                 </h3>
-                <p className="text-center text-sm text-gray-500 sm:text-left">
+                <p className="text-center text-sm text-gray-500 sm:text-left dark:text-zinc-400">
                   Monitor the exact routes and locations where your ads are
                   displayed in real-time. Access detailed reports on
                   impressions, reach, and engagement to measure your campaign's
                   success.
                 </p>
               </div>
-              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105">
+              <div className="flex flex-col h-[250px] gap-1 rounded-lg bg-white p-6 shadow-md transition-all hover:scale-105 dark:bg-zinc-700 dark:text-zinc-300">
                 <h3 className="text-center text-lg font-bold  sm:text-left">
                   Easy Campaign Management
                 </h3>
-                <p className="text-center text-sm text-gray-500 sm:text-left">
+                <p className="text-center text-sm text-gray-500 sm:text-left dark:text-zinc-400">
                   Simple tools to create, launch, and manage your ad campaigns
                   all in one place. Our team is available around the clock to
                   assist with any aspect of your advertising campaign.

@@ -26,7 +26,7 @@ export default async function LayoutSideBar() {
   }
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-white dark:bg-neutral-900 dark:border-neutral-800 sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
         <TooltipProvider>
           <Link
@@ -41,7 +41,7 @@ export default async function LayoutSideBar() {
             <TooltipTrigger asChild>
               <Link
                 href="/"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-black transition-colors hover:text-fuchsia-500 hover:bg-slate-100 md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-black dark:text-zinc-300 transition-colors hover:text-fuchsia-500 hover:bg-slate-100 dark:hover:bg-zinc-700 md:h-8 md:w-8"
                 prefetch={false}
               >
                 <LayoutDashboardIcon className="h-5 w-5" />
@@ -54,7 +54,7 @@ export default async function LayoutSideBar() {
             <TooltipTrigger asChild>
               <Link
                 href="/new"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-black transition-colors hover:text-fuchsia-500 hover:bg-slate-100 md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-black dark:text-zinc-300 transition-colors hover:text-fuchsia-500 hover:bg-slate-100 dark:hover:bg-zinc-700 md:h-8 md:w-8"
                 prefetch={false}
               >
                 <PlusIcon className="h-5 w-5" />
@@ -71,7 +71,7 @@ export default async function LayoutSideBar() {
             <TooltipTrigger asChild>
               <Link
                 href="/profile"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-black transition-colors hover:text-fuchsia-500 hover:bg-slate-100 md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-black dark:text-zinc-300 transition-colors hover:text-fuchsia-500 hover:bg-slate-100 dark:hover:bg-zinc-700 md:h-8 md:w-8"
                 prefetch={false}
               >
                 <SettingsIcon className="h-5 w-5" />

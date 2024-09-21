@@ -158,18 +158,19 @@ export function PieChartExample() {
                         y={viewBox.cy}
                         textAnchor="middle"
                         dominantBaseline="middle"
+                        className="fill-black dark:fill-white"
                       >
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className=" text-3xl font-bold"
                         >
                           {totalVisitors.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
+                          className=""
                         >
                           Visitors
                         </tspan>

@@ -30,13 +30,13 @@ export default async function LayoutHeader() {
 
   if (!user) {
     return (
-      <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 p-10 sticky top-0 bg-slate-50/100 z-50">
+      <nav className="w-full flex justify-center border-b border-b-slate-300 h-16 p-10 sticky top-0 bg-slate-50/100 z-50 dark:bg-neutral-900 dark:text-zinc-300 dark:border-b-neutral-800">
         <div className="w-full max-w-4xl flex justify-between items-center">
           <Link
             href="/"
             className="flex flex-roe gap-2 items-center transition-all hover:scale-110"
           >
-            <LoaderPinwheelIcon className="h-10 w-10 rounded-full bg-fuchsia-500 text-lg font-semibold text-white md:text-base p-1" />
+            <LoaderPinwheelIcon className="h-10 w-10 rounded-full bg-fuchsia-500 text-lg font-semibold text-white md:text-base p-1 dark:text-zinc-900" />
             <span className="text-3xl bg-gradient-to-r from-fuchsia-500 via-fuchsia-500 to-fuchsia-400 bg-clip-text text-transparent">
               Wheelee
             </span>

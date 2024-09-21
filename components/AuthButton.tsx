@@ -20,7 +20,7 @@ export default async function AuthButton({ className }: AuthButtonProps) {
   return user ? (
     <div className={cn("flex items-center justify-center gap-4", className)}>
       <form action={signOut}>
-        <Button>Logout</Button>
+        <Button className="dark:text-zinc-300">Logout</Button>
       </form>
     </div>
   ) : (

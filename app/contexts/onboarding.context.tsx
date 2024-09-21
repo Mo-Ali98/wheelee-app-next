@@ -37,14 +37,11 @@ export function OnboardingProvider({
 
   const totalSteps = 2;
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  useEffect(() => {}, [data]);
 
   const handleFinish = async () => {
     setLoading(true);
     try {
-      console.log("Done", data);
       await fetch("/api/accounts", {
         method: "POST",
         headers: {

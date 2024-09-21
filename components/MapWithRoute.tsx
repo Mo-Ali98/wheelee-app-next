@@ -61,8 +61,8 @@ const HotspotMapRoute: React.FC = () => {
         <CardTitle>Driver Activity Map</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-row gap-2 flex-1">
-          <div style={{ width: "70%", height: "500px" }}>
+        <div>
+          <div style={{ width: "100%", height: "500px" }}>
             <MapContainer
               center={[51.5074, -0.1276]} // Approximate center of London
               zoom={10} // Adjust zoom level to fit the whole city
@@ -83,12 +83,15 @@ const HotspotMapRoute: React.FC = () => {
               <Polyline positions={coordinates} color="blue" />
             </MapContainer>
           </div>
-          <div className="flex flex-col gap-2 w-[30%]">
-            <p className="flex flex-row gap-1 text-lg">
-              <MapPin className="h-6 w-6" />
-              Locations
-            </p>
+        </div>
 
+        <div className="">
+          <p className="flex flex-row gap-1 text-lg my-3">
+            <MapPin className="h-6 w-6" />
+            Locations
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             {coordinates.slice(0, 4).map((coord, index) => (
               <LocationCard
                 key={index}
